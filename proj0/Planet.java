@@ -64,11 +64,17 @@ public class Planet {
      */
     public double calcForceExertedBy(Planet p) {
         double r = this.calcDistance(p);
+        if (r == 0) {
+            return 0;
+        }
         return this.mass * p.mass * G / r / r;
     }
 
     public double calcForceExertedByX(Planet p) {
         double r = this.calcDistance(p);
+        if (r == 0) {
+            return 0;
+        }
         double dx = p.xxPos - this.xxPos;
         double f = calcForceExertedBy(p);
         return f * dx / r;
@@ -76,8 +82,27 @@ public class Planet {
 
     public double calcForceExertedByY(Planet p) {
         double r = this.calcDistance(p);
+        if (r == 0) {
+            return 0;
+        }
         double dy = p.yyPos - this.yyPos;
         double f = calcForceExertedBy(p);
         return f * dy / r;
+    }
+
+    public double calcNetForceExertedByX(Planet[] planets) {
+        double ans = 0;
+        for (Planet planet : planets) {
+            ans += this.calcForceExertedByX(planet);
+        }
+        return ans;
+    }
+
+    public double calcNetForceExertedByY(Planet[] planets) {
+        double ans = 0;
+        for (Planet planet : planets) {
+            ans += this.calcForceExertedByY(planet);
+        }
+        return ans;
     }
 }
