@@ -1,4 +1,5 @@
 public class Planet {
+    static final double G = 6.67e-11;
     /**
      * Its current x position
      */
@@ -56,4 +57,13 @@ public class Planet {
         return Math.sqrt(dx * dx + dy * dy);
     }
 
+    /**
+     * @param p a planet
+     * @return a double describing the force exerted on this planet by the given
+     *         planet.
+     */
+    public double calcForceExertedBy(Planet p) {
+        double r = this.calcDistance(p);
+        return this.mass * p.mass * G / r / r;
+    }
 }
