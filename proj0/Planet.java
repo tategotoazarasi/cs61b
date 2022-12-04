@@ -105,4 +105,18 @@ public class Planet {
         }
         return ans;
     }
+
+    /**
+     * @param dt
+     * @param fx x-force
+     * @param fy y-force
+     */
+    public void update(double dt, double fx, double fy) {
+        double ax = fx / this.mass;
+        double ay = fy / this.mass;
+        this.xxVel += ax * dt;
+        this.yyVel += ay * dt;
+        this.xxPos += dt * xxVel;
+        this.yyPos += dt * yyVel;
+    }
 }
