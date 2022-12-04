@@ -43,4 +43,17 @@ public class Planet {
         imgFileName = p.imgFileName;
     }
 
+    /**
+     * calculates the distance between two Planets.
+     * 
+     * @param p a single Planet
+     * @return a double equal to the distance between the supplied planet and the
+     *         planet that is doing the calculation
+     */
+    public double calcDistance(Planet p) {
+        double dx = p.xxPos - this.xxPos;
+        double dy = p.yyPos - this.yyPos;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+
 }
